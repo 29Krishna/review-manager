@@ -14,23 +14,41 @@ export const fetchReviews = createAsyncThunk(
 export const addReview = createAsyncThunk(
   'reviews/addReview',
   async (reviewData) => {
-    const response = await axios.post(BASE_URL, reviewData);
-    return response.data;
+    // For demo purposes, we'll create a local ID
+    const localId = Date.now();
+    return {
+      ...reviewData,
+      id: localId,
+      userId: 1,
+    };
   }
 );
 
 export const updateReview = createAsyncThunk(
   'reviews/updateReview',
   async ({ id, updatedReview }) => {
-    const response = await axios.put(`${BASE_URL}/${id}`, updatedReview);
-    return response.data;
+    // Check if the review is from the API or local
+    if (id <= 100) {
+      // API review
+      const response = await axios.put(`${BASE_URL}/${id}`, updatedReview);
+      return response.data;
+    } else {
+      // Local review
+      return {
+        ...updatedReview,
+        id: id,
+      };
+    }
   }
 );
 
 export const deleteReview = createAsyncThunk(
   'reviews/deleteReview',
   async (id) => {
-    await axios.delete(`${BASE_URL}/${id}`);
+    // Only make API call for API reviews
+    if (id <= 100) {
+      await axios.delete(`${BASE_URL}/${id}`);
+    }
     return id;
   }
 );
