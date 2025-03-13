@@ -23,8 +23,8 @@ Before you begin, ensure you have the following installed:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/review-sphere.git
-cd review-sphere
+git clone https://github.com/29Krishna/review-manager
+cd review-manager
 ```
 
 2. Install dependencies:
@@ -42,7 +42,7 @@ The application will be available at `http://localhost:5173`
 ## Project Structure
 
 ```
-review-sphere/
+review-manager/
 ├── src/
 │   ├── components/
 │   │   ├── AddReview.jsx
