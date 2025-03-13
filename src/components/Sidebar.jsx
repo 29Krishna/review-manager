@@ -21,13 +21,11 @@ const Sidebar = () => {
       {/* Mobile menu button */}
       <button
         onClick={toggleSidebar}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-gray-800 text-white hover:bg-gray-700"
+        className={`lg:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-gray-800 text-white hover:bg-gray-700 ${
+          isOpen ? 'invisible' : 'visible'
+        }`}
       >
-        {isOpen ? (
-          <XMarkIcon className="h-6 w-6" />
-        ) : (
-          <Bars3Icon className="h-6 w-6" />
-        )}
+        <Bars3Icon className="h-6 w-6" />
       </button>
 
       {/* Sidebar */}
@@ -37,7 +35,15 @@ const Sidebar = () => {
         }`}
       >
         <div className="p-4">
-          <h1 className="text-2xl font-bold mb-8">ReviewSphere</h1>
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-2xl font-bold">ReviewSphere</h1>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="lg:hidden text-white hover:text-gray-300"
+            >
+              <XMarkIcon className="h-6 w-6" />
+            </button>
+          </div>
           <nav>
             <ul className="space-y-4">
               {navItems.map((item) => (
