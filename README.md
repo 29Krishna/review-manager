@@ -1,4 +1,4 @@
-# ReviewSphere
+# BookNest
 
 A modern web application for managing book reviews, built with React, Redux, and Tailwind CSS.
 
